@@ -1,0 +1,56 @@
+<p>
+  <mat-toolbar>
+    <span>MY TASK BOARD</span>
+  </mat-toolbar>
+</p>
+<br>
+<div cdkDropListGroup>
+  <div class="example-container">
+    <h2>TO DO</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="todo"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>IN PROGRESS</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="inprogress"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of inprogress" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+
+  <div class="example-container">
+    <h2>DONE</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="done"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+</div>
+
+    <form >
+      <mat-form-field class="example-full-width">
+        <mat-label>New task</mat-label>
+        <input
+          matInput placeholder="Ex. Check email"
+          newTask($event)>
+      </mat-form-field>
+      
+      <button mat-mini-fab color="primary" (Click)="onAdd()">+</button>
+      
+ 

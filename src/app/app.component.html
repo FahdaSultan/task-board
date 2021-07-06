@@ -1,0 +1,58 @@
+<p>
+  <mat-toolbar>
+    <span>MY TASK BOARD</span>
+  </mat-toolbar>
+</p>
+<br>
+<div cdkDropListGroup>
+  <div class="example-container">
+    <h2>TO DO</h2>
+
+    <div
+      cdkDropList
+      class="example-list"
+      id="list-todo"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="['list-inprogress']"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>IN PROGRESS</h2>
+
+    <div
+      cdkDropList
+      class="example-list"
+      id="list-inprogress"
+      [cdkDropListData]="inprogress"
+      [cdkDropListConnectedTo]="['list-todo', 'list-done']"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of inprogress" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+
+  <div class="example-container">
+    <h2>DONE</h2>
+
+    <div
+      cdkDropList
+      class="example-list"
+      id="list-done"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="['list-inprogress']"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+      <input type="text" [(ngModel)]="newTask" (keyup.enter)="addTask()"
+      class="form-control form-control-lg" placeholder="Add new task and hit enter key">
+  </div>
+      
+      
+ 

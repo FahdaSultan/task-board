@@ -15,9 +15,15 @@
       [cdkDropListData]="todo"
       [cdkDropListConnectedTo]="['list-inprogress']"
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+      <div
+      class="example-box"
+       *ngFor="let item of todo; index as i" cdkDrag>
+       {{item}}     
+         <button class="remove" mat-flat-button color="warn" (click)="onDeleteTask(i)">X</button>
+        </div>
+      </div>
     </div>
-  </div>
+  
 
   <div class="example-container">
     <h2>IN PROGRESS</h2>
@@ -50,9 +56,24 @@
 </div>
 
   <div class="row">
-      <input type="text" [(ngModel)]="newTask" (keyup.enter)="addTask()"
-      class="form-control form-control-lg" placeholder="Add new task and hit enter key">
-  </div>
+      <input
+        type="text"
+        id="task"
+        name="task"
+         [(ngModel)]="newTask"
+          (keyup.enter)="addTask()"
+          class="form-control form-control-lg"
+          #task="ngModel"
+          required
+         placeholder="Add new task and hit enter key">
+
+         <!-- <div *ngIf="task.invalid && (task.dirty || task.touched)"
+         class="alert">
+       <div *ngIf="task.errors?.required">
+  </div> -->
+</div>
+
+  
       
       
  

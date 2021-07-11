@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,11 +11,17 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class AppComponent {
   title = 'task-board';
-  todo: string[] = ['First task']; 
+  todo: string[] = ['first task']; 
   inprogress: string[]= [];
   done: string[]= [];
 
   newTask = '';
+ 
+  // myForm!: FormGroup;
+  
+// constructor(private fb: FormBuilder) {
+//  this.createForm();
+// }
   
 
   // newTask(newItem: string) {
@@ -32,16 +40,30 @@ export class AppComponent {
     }
   }
 
-  
   addTask(){
-    this.todo.push(this.newTask);
+    if (this.newTask !=='') {
+      this.todo.push(this.newTask);
+    }
+    alert("Task is required... try again.");
     this.newTask = '';
   }
 
+  onDeleteTask(index: number) {
+    if (index !== -1) {
+        this.todo.splice(index, 1);
+  }
+}
 
-  // onAdd() {
-  //   this.todo.push(localStorage.getItem('task'));
-  // }
+// get taskV() {
+//    return this.myForm.get('task'); 
+//   }
+
+
+// createForm() {
+//  this.myForm = this.fb.group({
+//     username: ['', Validators.required ]
+//  });
+// }
 
 
 }

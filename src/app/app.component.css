@@ -69,6 +69,19 @@ input {
  padding: 1rem;
  margin: 200px 500px;
 }
+button.remove {
+  margin: 0 310px;
+  cursor: pointer;
+  position: absolute; 
+}
+
+alert {
+  color: red;
+  text-align: center;
+ 
+}
+
+
 
 
 

@@ -44,7 +44,10 @@ export class AppComponent {
     if (this.newTask !=='') {
       this.todo.push(this.newTask);
     }
-    alert("Task is required... try again.");
+    else if (this.newTask ==''){
+      alert("Task is required... try again."); 
+    }
+
     this.newTask = '';
   }
 
